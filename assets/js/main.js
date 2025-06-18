@@ -1,4 +1,4 @@
-/*=============== SHOW MENU ===============*/
+/*=============== показати меню ===============*/
 const navMenu = document.getElementById("nav-menu");
 const navToggle = document.getElementById("nav-toggle");
 const navClose = document.getElementById("nav-close");
@@ -15,7 +15,7 @@ if (navClose) {
     });
 }
 
-/*=============== REMOVE MENU MOBILE ===============*/
+/*=============== закрити меню при натисканні ===============*/
 const navLink = document.querySelectorAll(".nav__link");
 
 const linkAction = () => {
@@ -25,7 +25,7 @@ const linkAction = () => {
 
 navLink.forEach((n) => n.addEventListener("click", linkAction));
 
-/*=============== CHANGE BACKGROUND HEADER ===============*/
+/*=============== змінити фон хедера при скролі ===============*/
 const scrollHeader = () => {
     const header = document.getElementById("header");
 
@@ -33,7 +33,7 @@ const scrollHeader = () => {
 };
 window.addEventListener("scroll", scrollHeader);
 
-/*=============== SCROLL SECTIONS ACTIVE LINK ===============*/
+/*=============== зробити лінк активним при скролі ===============*/
 const sections = document.querySelectorAll("section[id]");
 
 const scrollActive = () => {
@@ -55,7 +55,7 @@ const scrollActive = () => {
 
 window.addEventListener("scroll", scrollActive);
 
-/*=============== SHOW SCROLL UP ===============*/
+/*=============== показати кнопку вверх ===============*/
 const scrollUP = () => {
     const scrollup = document.getElementById("scroll-up");
     this.scrollY >= 350 ? scrollup.classList.add("show-scroll") : scrollup.classList.remove("show-scroll");
@@ -63,7 +63,7 @@ const scrollUP = () => {
 
 window.addEventListener("scroll", scrollUP);
 
-/*=============== SCROLL REVEAL ANIMATION ===============*/
+/*=============== анімації ===============*/
 const sr = ScrollReveal({
     origin: "top",
     distance: "60px",
@@ -78,7 +78,7 @@ sr.reveal(`.choose__img, .calculate__content`, { origin: "left" });
 sr.reveal(`.choose__content, .calculate__img`, { origin: "right" });
 sr.reveal(`.footer__container, .footer__group`, { origin: "bottom" });
 
-/*=============== CALCULATE JS ===============*/
+/*=============== калькулятор ===============*/
 const calculateForm = document.getElementById("calculate-form");
 const calculateCm = document.getElementById("calculate-cm");
 const calculateKg = document.getElementById("calculate-kg");
@@ -91,7 +91,7 @@ const calculateBmi = (e) => {
         calculateMessage.classList.remove("color-green");
         calculateMessage.classList.add("color-red");
 
-        calculateMessage.textContent = "Fill the Height and Weight!";
+        calculateMessage.textContent = "Заповніть поля «Зріст» та «Вага»!";
         setTimeout(() => {
             calculateMessage.textContent = "";
         }, 3000);
@@ -102,13 +102,13 @@ const calculateBmi = (e) => {
 
         if (bmi < 18.5) {
             calculateMessage.classList.add("color-green");
-            calculateMessage.textContent = `Your BMI is ${bmi} and you are skinny.`;
-        } else if (bmi < 25) {
+            calculateMessage.textContent = `Ваш ІМТ становить ${bmi}, ви дуже стрункі.`;
+        } else if (bmi <= 25) {
             calculateMessage.classList.add("color-green");
-            calculateMessage.textContent = `Your BMI is ${bmi} and you are healthy.`;
+            calculateMessage.textContent = `Ваш ІМТ становить ${bmi}, прекрасна форма.`;
         } else {
             calculateMessage.classList.add("color-green");
-            calculateMessage.textContent = `Your BMI is ${bmi} and you are overweight.`;
+            calculateMessage.textContent = `Ваш ІМТ становить ${bmi}, треба щось з цим робити.`;
         }
 
         calculateCm.value = "";
